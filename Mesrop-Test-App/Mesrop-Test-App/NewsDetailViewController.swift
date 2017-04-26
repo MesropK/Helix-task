@@ -16,7 +16,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet weak var galleryPlusImageView:    UIImageView!
     @IBOutlet weak var newsWebView:             UIWebView!
     @IBOutlet weak var titleLabel:              UILabel!
-    @IBOutlet weak var categoryLabel:           UILabel!
+    @IBOutlet weak var categoryLabel:              UILabel!
     @IBOutlet weak var galleryItemsView:        UIView!
     
     @IBOutlet weak var topView: UIView!
@@ -27,20 +27,30 @@ class NewsDetailViewController: UIViewController {
     
     var lastTopOffsetY: CGFloat = 0
     let navBarHeight: CGFloat = 60
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+    }
 
     
     func configureView() {
-        // Update the user interface for the news item.
+        
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let offset = CGPoint(x: 0, y: navBarHeight)
         newsWebView.scrollView.contentInset = insets
         newsWebView.scrollView.scrollIndicatorInsets = insets
         newsWebView.scrollView.setContentOffset(offset, animated: false)
         newsWebView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+        // Update the user interface for the news item.
         if let news = self.newsItem {
             //news title ui
             titleLabel.text = news.title
-            categoryLabel.text = "/" + news.category!
+            if let catagory = news.category {
+                self.title = " / " + catagory
+            }
+            self.categoryLabel.text = news.date?.shortString
             //news main cover Image
             if let urlString = news.coverPhotoUrl {
                 let url = URL(string: urlString)!
@@ -93,14 +103,6 @@ class NewsDetailViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showGallery",
-            let galleryViewController = segue.destination as? GalleryViewControllerCollectionViewController,
-            let galleryItems = newsItem?.gallery {
-            galleryViewController.galleryItems = Array(galleryItems) as? [GalleryItemEntity]
-        }
-    }
-
     @IBAction func moreButtonTapped(_ sender: UITapGestureRecognizer) {
         showGallery()
     }

@@ -17,7 +17,6 @@ enum InternalError: Error {
     case badResponse
 }
 
-
 class NetworkManager {
     
     static let shared = NetworkManager()

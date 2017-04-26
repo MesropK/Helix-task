@@ -15,14 +15,19 @@ class NewsListViewController: UITableViewController {
     var detailViewController: NewsDetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     var _fetchedResultsController: NSFetchedResultsController<NewsItemEntity>? = nil
-
+    
+    //MARK: View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //add table view refresh control action
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
         
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? NewsDetailViewController
         }
+        
         NetworkManager.shared.getAllNews { result in
             switch result {
             case .fail(with: let error):
@@ -31,7 +36,6 @@ class NewsListViewController: UITableViewController {
                 let news = data as! [NewsItem]
                 CoreDataManager.shared.saveNews(items: news)
             }
-            
         }
     }
     
@@ -39,33 +43,16 @@ class NewsListViewController: UITableViewController {
         super.viewDidAppear(animated)
         //self.tableView.reloadData()
     }
-
-    func showAlert(for error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 
-
-    func insertNewNewsObject(_ sender: Any) {
-        let context = self.fetchedResultsController.managedObjectContext
-        let newItem = NewsItemEntity(context: context)
-             
-        // If appropriate, configure the new managed object.
-        newItem.date = NSDate()
-
-        // Save the context.
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
+    func showAlert(for error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Segues
@@ -87,6 +74,11 @@ class NewsListViewController: UITableViewController {
 // MARK: - Table View
 
 extension NewsListViewController  {
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -95,6 +87,11 @@ extension NewsListViewController  {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionInfo = fetchedResultsController.sections?[section] else { fatalError("Unexpected Section") }
+        return sectionInfo.name
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,7 +105,6 @@ extension NewsListViewController  {
         if editingStyle == .delete {
             let context = fetchedResultsController.managedObjectContext
             context.delete(fetchedResultsController.object(at: indexPath))
-                
             do {
                 try context.save()
             } catch {
@@ -131,13 +127,10 @@ extension NewsListViewController  {
             }
             cell.unreadCircleView.isHidden = newsEntity.isRead
             if let date = newsEntity.date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
-                cell.dateLabel.text = dateFormatter.string(from: date as Date)
+                cell.dateLabel.text = date.shortString
             }
             cell.categoryLabel.text = newsEntity.category
             cell.titleLabel.text = newsEntity.title
-            
            // cell.configure(for: news)
         }
     }
@@ -161,9 +154,10 @@ extension NewsListViewController  {
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
-        aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        let afetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: #keyPath(NewsItemEntity.category), cacheName: nil)
+        
+        afetchedResultsController.delegate = self
+        _fetchedResultsController = afetchedResultsController
         
         do {
             try _fetchedResultsController!.performFetch()
@@ -176,22 +170,13 @@ extension NewsListViewController  {
     }
 
 }
+
 // MARK: - Fetched results controller delegate
 
 extension NewsListViewController : NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        default:
-            return
-        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -215,14 +200,25 @@ extension NewsListViewController : NSFetchedResultsControllerDelegate {
         }
     }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            break;
+        }
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
     
-    //     func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    //         // In the simplest, most efficient, case, reload the table view.
-    //         tableView.reloadData()
-    //     }
+    func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+             // In the simplest, most efficient, case, reload the table view.
+             tableView.reloadData()
+    }
 }
 

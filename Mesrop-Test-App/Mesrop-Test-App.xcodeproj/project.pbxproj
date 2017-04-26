@@ -19,8 +19,7 @@
 		B25928CA1EAFDAF700B74364 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928C91EAFDAF700B74364 /* NewsItem.swift */; };
 		B25928CC1EAFE6D400B74364 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928CB1EAFE6D400B74364 /* CoreDataStack.swift */; };
 		B25928D01EAFFB4400B74364 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928CF1EAFFB4400B74364 /* NewsTableViewCell.swift */; };
-		B27EE61A1EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */; };
-		B27EE61C1EB0D423006A02E6 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */; };
+		B25928D31EB1599B00B74364 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928D21EB1599B00B74364 /* Helpers.swift */; };
 		B27EE61E1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE61D1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +38,7 @@
 		B25928C91EAFDAF700B74364 /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		B25928CB1EAFE6D400B74364 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B25928CF1EAFFB4400B74364 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewControllerCollectionViewController.swift; sourceTree = "<group>"; };
-		B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
+		B25928D21EB1599B00B74364 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		B27EE61D1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B800037D11375A95C21FFF90 /* Pods-Mesrop-Test-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mesrop-Test-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App.release.xcconfig"; sourceTree = "<group>"; };
 		D9FC816F5DD4D7CE0B8AEB47 /* Pods-Mesrop-Test-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mesrop-Test-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,11 +94,12 @@
 		B24BAC031EAFCB51002AF255 /* Mesrop-Test-App */ = {
 			isa = PBXGroup;
 			children = (
+				B25928D21EB1599B00B74364 /* Helpers.swift */,
+				B24BAC1D1EAFCEF4002AF255 /* Controllers */,
 				B25928D11EAFFB4800B74364 /* Views */,
 				B25928CE1EAFF36000B74364 /* Objects */,
-				B24BAC1C1EAFCB71002AF255 /* CoreData */,
 				B25928CD1EAFF34200B74364 /* Network */,
-				B24BAC1D1EAFCEF4002AF255 /* Controllers */,
+				B24BAC1C1EAFCB71002AF255 /* CoreData */,
 				B24BAC0D1EAFCB51002AF255 /* Main.storyboard */,
 				B24BAC101EAFCB51002AF255 /* Assets.xcassets */,
 				B24BAC1B1EAFCB62002AF255 /* SupportingFiles */,
@@ -132,8 +131,6 @@
 			children = (
 				B24BAC091EAFCB51002AF255 /* NewsListViewController.swift */,
 				B24BAC0B1EAFCB51002AF255 /* NewsDetailViewController.swift */,
-				B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */,
-				B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,13 +286,12 @@
 				B25928CC1EAFE6D400B74364 /* CoreDataStack.swift in Sources */,
 				B24BAC051EAFCB51002AF255 /* AppDelegate.swift in Sources */,
 				B25928D01EAFFB4400B74364 /* NewsTableViewCell.swift in Sources */,
+				B25928D31EB1599B00B74364 /* Helpers.swift in Sources */,
 				B25928CA1EAFDAF700B74364 /* NewsItem.swift in Sources */,
 				B24BAC081EAFCB51002AF255 /* Mesrop_Test_App.xcdatamodeld in Sources */,
 				B24BAC1F1EAFCF26002AF255 /* NetworkManager.swift in Sources */,
-				B27EE61A1EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift in Sources */,
 				B24BAC0A1EAFCB51002AF255 /* NewsListViewController.swift in Sources */,
 				B24BAC0C1EAFCB51002AF255 /* NewsDetailViewController.swift in Sources */,
-				B27EE61C1EB0D423006A02E6 /* ShowImageViewController.swift in Sources */,
 				B27EE61E1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

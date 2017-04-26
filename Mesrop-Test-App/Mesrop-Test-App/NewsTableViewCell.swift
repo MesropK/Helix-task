@@ -10,10 +10,7 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var unreadCircleView: UIView!
-    
-    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -22,7 +19,6 @@ class NewsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         unreadCircleView.layer.cornerRadius = unreadCircleView.frame.width / 2.0;
-        // Initialization code
     }
     
     func configure(for newsEntity: NewsItemEntity) {
@@ -32,10 +28,7 @@ class NewsTableViewCell: UITableViewCell {
             }
         }
         if let date = newsEntity.date {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            formatter.timeStyle = .short
-            dateLabel.text = formatter.string(from: date as Date)
+            dateLabel.text = date.shortString
         }
         categoryLabel.text = newsEntity.category
         titleLabel.text = newsEntity.title
@@ -43,8 +36,6 @@ class NewsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

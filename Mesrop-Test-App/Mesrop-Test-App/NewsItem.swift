@@ -36,7 +36,6 @@ struct NewsItem {
     
 }
 
-
 struct GalleryItem {
     
     let title:          String
