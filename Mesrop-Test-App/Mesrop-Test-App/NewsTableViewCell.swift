@@ -11,6 +11,9 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var unreadCircleView: UIView!
+    
+    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,6 +21,7 @@ class NewsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        unreadCircleView.layer.cornerRadius = unreadCircleView.frame.width / 2.0;
         // Initialization code
     }
     

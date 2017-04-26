@@ -20,6 +20,11 @@ class CoreDataManager {
         news.forEach { insertNewsObjectsFor(news:  $0)}
     }
     
+    func makeNewsRead(news: NewsItemEntity) {
+        news.isRead = true
+        self.saveContext()
+    }
+    
     private func insertNewsObjectsFor(news: NewsItem) {
         
         let context = self.persistentContainer.viewContext
@@ -39,6 +44,7 @@ class CoreDataManager {
         newsEntity.title      = news.title
         newsEntity.category   = news.category
         newsEntity.body       = news.body
+        newsEntity.coverPhotoUrl = news.coverPhotoUrl
         
         for gallery in news.gallery {
             let galleryItem = GalleryItemEntity(context: context)

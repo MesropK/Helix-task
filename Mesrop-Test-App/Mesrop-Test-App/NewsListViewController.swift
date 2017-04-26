@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Haneke
 
 class NewsListViewController: UITableViewController {
 
@@ -32,6 +33,11 @@ class NewsListViewController: UITableViewController {
             }
             
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.tableView.reloadData()
     }
 
     func showAlert(for error: Error) {
@@ -67,9 +73,10 @@ class NewsListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let object = fetchedResultsController.object(at: indexPath)
+            let newsObject = fetchedResultsController.object(at: indexPath)
+                CoreDataManager.shared.makeNewsRead(news: newsObject)
                 let controller = (segue.destination as! UINavigationController).topViewController as! NewsDetailViewController
-                controller.newsItem = object
+                controller.newsItem = newsObject
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -118,11 +125,11 @@ extension NewsListViewController  {
             cell.categoryLabel.text = "Category"
             cell.titleLabel.text = "Content"
 
-            if let url = newsEntity.coverPhotoUrl {
-                NetworkManager.shared.downloadImage(at: url) { image in
-                    cell.thumbnailImageView.image = image
-                }
+            if let urlString = newsEntity.coverPhotoUrl {
+                let url = URL(string: urlString)!
+                cell.thumbnailImageView.hnk_setImageFromURL(url)
             }
+            cell.unreadCircleView.isHidden = newsEntity.isRead
             if let date = newsEntity.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"

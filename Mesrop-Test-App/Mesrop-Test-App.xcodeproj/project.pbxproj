@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6358ED7F0460DB51C689E8F6 /* Pods_Mesrop_Test_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550DC72179E0D9B1265A67BF /* Pods_Mesrop_Test_App.framework */; };
 		B24BAC051EAFCB51002AF255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24BAC041EAFCB51002AF255 /* AppDelegate.swift */; };
 		B24BAC081EAFCB51002AF255 /* Mesrop_Test_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B24BAC061EAFCB51002AF255 /* Mesrop_Test_App.xcdatamodeld */; };
 		B24BAC0A1EAFCB51002AF255 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24BAC091EAFCB51002AF255 /* NewsListViewController.swift */; };
@@ -18,9 +19,13 @@
 		B25928CA1EAFDAF700B74364 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928C91EAFDAF700B74364 /* NewsItem.swift */; };
 		B25928CC1EAFE6D400B74364 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928CB1EAFE6D400B74364 /* CoreDataStack.swift */; };
 		B25928D01EAFFB4400B74364 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928CF1EAFFB4400B74364 /* NewsTableViewCell.swift */; };
+		B27EE61A1EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */; };
+		B27EE61C1EB0D423006A02E6 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */; };
+		B27EE61E1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EE61D1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		550DC72179E0D9B1265A67BF /* Pods_Mesrop_Test_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mesrop_Test_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24BAC011EAFCB51002AF255 /* Mesrop-Test-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mesrop-Test-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24BAC041EAFCB51002AF255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B24BAC071EAFCB51002AF255 /* Mesrop_Test_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mesrop_Test_App.xcdatamodel; sourceTree = "<group>"; };
@@ -34,6 +39,11 @@
 		B25928C91EAFDAF700B74364 /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		B25928CB1EAFE6D400B74364 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B25928CF1EAFFB4400B74364 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewControllerCollectionViewController.swift; sourceTree = "<group>"; };
+		B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
+		B27EE61D1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		B800037D11375A95C21FFF90 /* Pods-Mesrop-Test-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mesrop-Test-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App.release.xcconfig"; sourceTree = "<group>"; };
+		D9FC816F5DD4D7CE0B8AEB47 /* Pods-Mesrop-Test-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mesrop-Test-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6358ED7F0460DB51C689E8F6 /* Pods_Mesrop_Test_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52C0F6D4257C053519B5C6FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				550DC72179E0D9B1265A67BF /* Pods_Mesrop_Test_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55588E26C51AAA61BD1637AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9FC816F5DD4D7CE0B8AEB47 /* Pods-Mesrop-Test-App.debug.xcconfig */,
+				B800037D11375A95C21FFF90 /* Pods-Mesrop-Test-App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B24BABF81EAFCB51002AF255 = {
 			isa = PBXGroup;
 			children = (
 				B24BAC031EAFCB51002AF255 /* Mesrop-Test-App */,
 				B24BAC021EAFCB51002AF255 /* Products */,
+				55588E26C51AAA61BD1637AE /* Pods */,
+				52C0F6D4257C053519B5C6FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +132,8 @@
 			children = (
 				B24BAC091EAFCB51002AF255 /* NewsListViewController.swift */,
 				B24BAC0B1EAFCB51002AF255 /* NewsDetailViewController.swift */,
+				B27EE6191EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift */,
+				B27EE61B1EB0D423006A02E6 /* ShowImageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -126,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B25928CF1EAFFB4400B74364 /* NewsTableViewCell.swift */,
+				B27EE61D1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -137,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B24BAC181EAFCB51002AF255 /* Build configuration list for PBXNativeTarget "Mesrop-Test-App" */;
 			buildPhases = (
+				41E573C1563D06EE4F414E78 /* [CP] Check Pods Manifest.lock */,
 				B24BABFD1EAFCB51002AF255 /* Sources */,
 				B24BABFE1EAFCB51002AF255 /* Frameworks */,
 				B24BABFF1EAFCB51002AF255 /* Resources */,
+				495F183BA3FB8A3B194C4A19 /* [CP] Embed Pods Frameworks */,
+				447AA7079EEB94E8E255480E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,6 +233,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		41E573C1563D06EE4F414E78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		447AA7079EEB94E8E255480E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		495F183BA3FB8A3B194C4A19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mesrop-Test-App/Pods-Mesrop-Test-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B24BABFD1EAFCB51002AF255 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -208,8 +292,11 @@
 				B25928CA1EAFDAF700B74364 /* NewsItem.swift in Sources */,
 				B24BAC081EAFCB51002AF255 /* Mesrop_Test_App.xcdatamodeld in Sources */,
 				B24BAC1F1EAFCF26002AF255 /* NetworkManager.swift in Sources */,
+				B27EE61A1EB0D3FB006A02E6 /* GalleryViewControllerCollectionViewController.swift in Sources */,
 				B24BAC0A1EAFCB51002AF255 /* NewsListViewController.swift in Sources */,
 				B24BAC0C1EAFCB51002AF255 /* NewsDetailViewController.swift in Sources */,
+				B27EE61C1EB0D423006A02E6 /* ShowImageViewController.swift in Sources */,
+				B27EE61E1EB0D4BD006A02E6 /* GalleryItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +419,10 @@
 		};
 		B24BAC191EAFCB51002AF255 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9FC816F5DD4D7CE0B8AEB47 /* Pods-Mesrop-Test-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mesrop-Test-App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mes.Mesrop-Test-App";
@@ -344,8 +433,10 @@
 		};
 		B24BAC1A1EAFCB51002AF255 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B800037D11375A95C21FFF90 /* Pods-Mesrop-Test-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Mesrop-Test-App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mes.Mesrop-Test-App";

@@ -54,6 +54,9 @@ class NetworkManager {
     
     func downloadImage(at urlString: String, completion: @escaping (_ image: UIImage?) -> ()) {
         guard let url = URL(string: urlString) else {
+            DispatchQueue.main.async() {
+                completion(nil)
+            }
             return
         }
         getDataFrom(url: url) { (data, response, error)  in
