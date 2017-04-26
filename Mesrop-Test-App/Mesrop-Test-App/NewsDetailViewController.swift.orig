@@ -32,7 +32,11 @@ class NewsDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> Spinner ui added
     
     func configureView() {
         
@@ -42,7 +46,11 @@ class NewsDetailViewController: UIViewController {
         newsWebView.scrollView.scrollIndicatorInsets = insets
         newsWebView.scrollView.setContentOffset(offset, animated: false)
         newsWebView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> Spinner ui added
         // Update the user interface for the news item.
         if let news = self.newsItem {
             //news title ui

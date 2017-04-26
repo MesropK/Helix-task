@@ -28,6 +28,14 @@ class NewsListViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? NewsDetailViewController
         }
         
+<<<<<<< HEAD
+=======
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.center = self.view.center
+        self.view.addSubview(spinner)
+        spinner.stopAnimating()
+        
+>>>>>>> Spinner ui added
         NetworkManager.shared.getAllNews { result in
             spinner.stopAnimating()
             spinner.removeFromSuperview()
